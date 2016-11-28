@@ -7,6 +7,7 @@ cache:
     - $HOME/.composer/cache
     - /home/travis/.composer/cache
 
+ # ★テスト対象のPHPバージョンを指定します
 php:
   - 5.3
   - 5.4
@@ -17,9 +18,10 @@ php:
 env:
   # plugin code
   global:
+     # ★作成したプラグインのコードを指定します
     PLUGIN_CODE=ExampleTest
   matrix:
-#    # ec-cube master
+#    # ec-cube master ★EC-CUBE3のバージョンを指定します
 #    - ECCUBE_VERSION=master DB=mysql USER=root DBNAME=myapp_test DBPASS=' ' DBUSER=root
 #    - ECCUBE_VERSION=master DB=pgsql USER=postgres DBNAME=myapp_test DBPASS=password DBUSER=postgres
     - ECCUBE_VERSION=3.0.9 DB=mysql USER=root DBNAME=myapp_test DBPASS=' ' DBUSER=root
@@ -30,6 +32,7 @@ env:
 matrix:
   fast_finish: true
 
+ # ★Travisを初期化しています
 before_script:
   # archive plugin
   - tar cvzf ${HOME}/${PLUGIN_CODE}.tar.gz ./*
@@ -48,10 +51,12 @@ before_script:
   # enable plugin
   - php app/console plugin:develop enable --code=${PLUGIN_CODE}
 
+ # ★プラグインをインストールしています
 script:
   # exec phpunit on ec-cube
   - phpunit app/Plugin/${PLUGIN_CODE}/Tests
 
+ # ★プラグインの、インストール・アンインストール、有効化・無効化のテストを行なっています
 after_script:
   # disable plugin
   - php app/console plugin:develop disable --code=${PLUGIN_CODE}
