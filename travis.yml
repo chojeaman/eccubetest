@@ -1,6 +1,6 @@
 language: php
 
-sudo: false
+sudo: true
 
 cache:
   directories:
@@ -41,7 +41,7 @@ before_script:
   - cd ec-cube
   # checkout versionlanguage: php
 
-sudo: false
+sudo: true
 
 cache:
   directories:
