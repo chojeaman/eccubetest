@@ -129,6 +129,6 @@ after_script:
   # re enable plugin
   - php app/console plugin:develop enable --code=${PLUGIN_CODE}
 
-  notifications:
-    email:
-      - j-cho@e-jps.net
+notifications:
+  email:
+    - j-cho@e-jps.net
