@@ -1,6 +1,6 @@
 language: php
 
-sudo: true
+sudo: false
 
 cache:
   directories:
@@ -41,7 +41,7 @@ before_script:
   - cd ec-cube
   # checkout versionlanguage: php
 
-sudo: true
+sudo: false
 
 cache:
   directories:
@@ -128,3 +128,7 @@ after_script:
   - php app/console plugin:develop install --code=${PLUGIN_CODE}
   # re enable plugin
   - php app/console plugin:develop enable --code=${PLUGIN_CODE}
+
+  notifications:
+    email:
+      - j-cho@e-jps.net
